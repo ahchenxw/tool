@@ -1,0 +1,36 @@
+a {
+    color: #2e6da4;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+/*header*/
+.navbar-login {
+    float: right;
+    line-height: 50px;
+}
+
+.contentHeader {
+    background-color: #2e6da4;
+    padding: 20px 0;
+    color: #fff;
+}
+
+#base64 textarea {
+    height: 200px;
+    resize: none;
+}

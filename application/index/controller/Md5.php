@@ -1,12 +1,13 @@
 <?php
+
 namespace app\index\controller;
 
 use think\Controller;
 
-class Index extends Base
+class Md5 extends Base
 {
     public function index()
     {
-        return view('index/index');
+        return view('md5/index');
     }
 }
