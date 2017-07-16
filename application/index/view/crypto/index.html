@@ -1,0 +1,102 @@
+{extend name="common/main"}
+{block name="content"}
+<div class="contentHeader mb-20">
+    <div class="container">
+        <h1>加密&解密</h1>
+        <p>简要介绍 Bootstrap，以及如何下载、使用，还有基本模版和案例，等等。</p>
+    </div>
+</div>
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li class="active">加密&解密</li>
+    </ol>
+    <div>
+        <ul class="nav nav-tabs mb-20" role="tablist">
+            <li role="presentation"><a href="#base64" role="tab" data-toggle="tab">Base64</a></li>
+            <li role="presentation" class="active"><a href="#hash" role="tab" data-toggle="tab">Hash</a></li>
+            <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Hmac-Hash</a></li>
+            <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="base64">
+                <form>
+                    <div class="col-md-5">
+                        <div>明文：</div>
+                        <textarea name="base64_plain_text" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-2 text-center" style="padding-top: 96px;">
+                        <div class="mb-20">
+                            <button data-query="type=encode" data-url="{:url('crypto/base64')}" type="button"
+                                    class="btn btn-primary event-crypto">
+                                Base64编码&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                            </button>
+                        </div>
+                        <div>
+                            <button data-query="type=decode" data-url="{:url('crypto/base64')}" type="button"
+                                    class="btn btn-primary event-crypto">
+                                <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Base64解码
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div>密文：</div>
+                        <textarea name="base64_cipher_text" class="form-control"></textarea></div>
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane active" id="hash">
+                <form>
+                    <div class="col-md-6 mb-20">
+                        <div>明文：</div>
+                        <textarea name="hash_plain_text" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-6 mb-20">
+                        <div>Hash值：</div>
+                        <textarea name="hash_cipher_text" class="form-control" disabled="disabled"></textarea>
+                    </div>
+                    <div class="col-md-12 mb-20">{$hash_button}</div>
+                    <div class="col-md-4">
+                        <div class="input-group navbar-left">
+                            <span class="input-group-addon">其他：</span>
+                            <select class="form-control" name="other_algo">
+                                {foreach name='hash_other_select' item='val' key='key'}
+                                <option value="{$key}">{$val}</option>
+                                {/foreach}
+                            </select>
+                            <span class="input-group-btn">
+                                <button data-query="algo=other" data-url="{:url('crypto/hash')}" type="button"
+                                        class="btn btn-primary event-crypto">
+                                    生成&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="messages">messages</div>
+            <div role="tabpanel" class="tab-pane" id="settings">settings</div>
+        </div>
+
+        <script>
+            $('.event-crypto').click(function (evt) {
+                var $target = $(evt.currentTarget);
+                var $form = $target.parents('form');
+                var dataUrl = $target.attr('data-url');
+                var query = $target.attr('data-query') + '&' + $form.serialize();
+                console.info(dataUrl);
+                console.info(query);
+                $.post(dataUrl, query, function (resp) {
+                    var obj = JSON.parse(resp);
+                    if (obj.status == 0) {
+                        var data = obj.data;
+                        for (var key in data) {
+                            $form.find("[name='" + key + "']").val(data[key]);
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+</div>
+
+{/block}
