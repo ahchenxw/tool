@@ -1,0 +1,59 @@
+<div class="tab-pane" id="symmetric">
+    <form method="post">
+        <div class="row mb-20">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input class="form-control" name="address" placeholder="请输入网址或IP地址" value="{$address}">
+                    <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i>查询
+                    </button>
+                </span>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-10">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        最近查询：<a href="#">www.baidu.com</a>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>域名/IP</th>
+                            <th>获取的IP</th>
+                            <th>数字地址</th>
+                            <th>IP的位置</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {empty name="tbody"}
+                        <tr>
+                            <td colspan="4">暂无结果</td>
+                        </tr>
+                        {else/}
+                        {foreach $tbody as $vo}
+                        <tr>
+                            <td>{$vo.address}</td>
+                            <td>{$vo.ip}</td>
+                            <td>{$vo.long}</td>
+                            <td>{$vo.position}</td>
+                        </tr>
+                        {/foreach}
+                        {/empty}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        您来自：{$user_ip} 所在区域：{$user_position}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

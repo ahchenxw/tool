@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+    {present name="title"}<title>{$title}</title>{/present}
+    {present name="keywords"}<meta name="keywords" content="{$keywords}">{/present}
+    {present name="description"}<meta name="description" content="{$description}">{/present}
     <meta charset="UTF-8">
-    <title>标题</title>
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/common.css">
     <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/jquery.form.js"></script>
     <script src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script src="/static/vue-2.4.1/vue.min.js"></script>
+    <script src="/static/vue-2.4.2/vue.js"></script>
+    <script src="/static/js/vkbeautify.js"></script>
     <script src="/static/js/common.js"></script>
 </head>
 <body>

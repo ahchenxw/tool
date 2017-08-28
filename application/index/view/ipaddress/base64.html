@@ -1,0 +1,29 @@
+<div class="tab-pane" id="base64">
+    <form method="post">
+        <input name="button-type" type="hidden">
+        <div class="row">
+            <div class="col-md-5">
+                <p>明文：</p>
+                <textarea spellcheck="false" name="plain_text"
+                          class="form-control">{present name="plain_text"}{$plain_text}{/present}</textarea>
+            </div>
+            <div class="col-md-2 text-center" style="padding-top: 106px;">
+                <div class="mb-20">
+                    <button type="submit" class="btn btn-primary" value="encode" event-type="AJAX_SUBMIT">
+                        Base64编码&nbsp;<i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary" value="decode" event-type="AJAX_SUBMIT">
+                        <i class="fa fa-chevron-left"></i>&nbsp;Base64解码
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <p>密文：</p>
+                <textarea spellcheck="false" name="cipher_text"
+                          class="form-control">{present name="cipher_text"}{$cipher_text}{/present}</textarea>
+            </div>
+        </div>
+    </form>
+</div>

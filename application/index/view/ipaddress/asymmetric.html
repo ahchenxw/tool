@@ -1,0 +1,82 @@
+<div class="tab-pane" id="symmetric">
+    <form method="post">
+        <div class="row mb-10">
+            <div class="col-md-6">
+                <p>RSA公钥：</p>
+                <textarea spellcheck="false" name="public_key" class="form-control public_key">-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDXWUMC9jV5jhO51ZY8uzjQHPPJ
+cRkQQqdv3detvs4qaXqv2askOc7RqpCB3I+ZfviVidOptQ6QswIi62OocMcEmVZL
+qXHileV3GiMT/1fydCIEFB3z7hbyEPzrCuBKrX086keYQbu04fCUv2PCGPBqtrwN
+vIvnCCbS1a1XWAj0twIDAQAB
+-----END PUBLIC KEY-----</textarea>
+            </div>
+            <div class="col-md-6">
+                <p>RSA私钥：</p>
+                <textarea spellcheck="false" name="private_key" class="form-control private_key">-----BEGIN RSA PRIVATE KEY-----
+MIICWwIBAAKBgQDXWUMC9jV5jhO51ZY8uzjQHPPJcRkQQqdv3detvs4qaXqv2ask
+Oc7RqpCB3I+ZfviVidOptQ6QswIi62OocMcEmVZLqXHileV3GiMT/1fydCIEFB3z
+7hbyEPzrCuBKrX086keYQbu04fCUv2PCGPBqtrwNvIvnCCbS1a1XWAj0twIDAQAB
+AoGAdd2XPeHANv26cjYi+q6GU/HkxNawHyQ8PJAxYhlTAgelbOY4M6WoOz2dxlYQ
+CrViHYbIYNSGWlB/1Nj9PM4tPqdrlu1aa7aSdsYa4LYpFktgQH6W/vmRA2y83JUr
+5HTrSVvLyhvt0RY44oTSMDGwRKzRe/qQ1w5ToB/vADgvTUECQQD83fXSIdNdTPkc
+5LCbW92gQkRAWQP5ttqSf4HPX7dSTTZaL3BxlEUDuZYbdUo0hTG0uNCUkYHqLSpO
+/uFazZCRAkEA2gRNJ+g1z2zgTYk/kf2QBW27PUU0Wbgca5qIzkanwwucfJ3jGeg5
+ujPKxYbkAK128sC7UlY4iCN90neXaO5UxwJAf8Y43QGyqEao6my0wQxepQhXLJzO
+YXSAZd6AXaVkIPZbLJ8kFoBxjzxMGXvfD0Lupv9shmYwW4CPDHPGs/eDwQJAcJYQ
+Ei/Euh2Lp/7cqVO8cFE+hGGcq0h8xMTFKWEreXohkeknQlW+mf3tFRyX2hG6f5ow
+IlEMWKGbdHj14+ZQOQJAONuhW3BIXP8i8Nb7qKuJnJ5YOsZBH56ZXGTi9oo8zmgu
+1ZR7HYyYnn1ucmfxg+Rv9NlwABqBCCXF+n0qrvlgvg==
+-----END RSA PRIVATE KEY-----</textarea>
+            </div>
+        </div>
+        <div class="row mb-10">
+            <div class="col-md-12">
+                <ul class="ul-group">
+                    <li>
+                        <div class="input-group" style="width:260px;">
+                            <span class="input-group-addon">Padding</span>
+                            <select class="form-control" name="padding">
+                                <option value="<?=OPENSSL_PKCS1_PADDING?>">PKCS1_PADDING</option>
+                                <option value="<?=OPENSSL_SSLV23_PADDING?>">SSLV23_PADDING</option>
+                                <option value="<?=OPENSSL_PKCS1_OAEP_PADDING?>">PKCS1_OAEP_PADDING</option>
+                                <option value="<?=OPENSSL_NO_PADDING?>">NO_PADDING</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="submit" class="btn btn-primary" value="public_encrypt" event-type="AJAX_SUBMIT">
+                            公钥加密&nbsp;<i class="fa fa-chevron-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="submit" class="btn btn-primary" value="public_decrypt" event-type="AJAX_SUBMIT">
+                            公钥解密&nbsp;<i class="fa fa-chevron-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="submit" class="btn btn-primary" value="private_encrypt" event-type="AJAX_SUBMIT">
+                            私钥加密&nbsp;<i class="fa fa-chevron-right"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="submit" class="btn btn-primary" value="private_decrypt" event-type="AJAX_SUBMIT">
+                            私钥解密&nbsp;<i class="fa fa-chevron-right"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mb-10">
+            <div class="col-md-6">
+                <p>待处理字符串：</p>
+                <textarea spellcheck="false" name="origin_text"
+                          class="form-control">{present name="plain_text"}{$plain_text}{/present}</textarea>
+            </div>
+            <div class="col-md-6">
+                <p>处理结果：</p>
+                <textarea spellcheck="false" name="result_text" class="form-control" disabled></textarea>
+            </div>
+        </div>
+
+    </form>
+</div>

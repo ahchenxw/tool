@@ -1,0 +1,23 @@
+{extend name="common/main"}
+{block name="content"}
+<div class="contentHeader mb-20">
+    <div class="container">
+        <h1>加密&解密</h1>
+        <p>常用的加密和解密工具。包括DES、3DES、AES、RSA、BASE64等加密解密；MD5、SHA1等HASH值生成...</p>
+    </div>
+</div>
+<div class="container">
+    <ul class="nav nav-tabs mb-20">
+        {present name="sub_nav"}
+        {foreach $sub_nav as $nav}{$nav}{/foreach}
+        {/present}
+    </ul>
+    <div id="alert-box">
+        {$flashMessage->output()}
+        <script>alertDelayHide();</script>
+    </div>
+    <div>
+        {present name="tab_content"}{$tab_content}{/present}
+    </div>
+</div>
+{/block}

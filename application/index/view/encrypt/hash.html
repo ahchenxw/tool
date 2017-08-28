@@ -1,0 +1,35 @@
+<div class="tab-pane" id="hash">
+    <form method="post">
+        <input name="button-type" type="hidden">
+        <div class="row mb-20">
+            <div class="col-md-6">
+                <p>明文：</p>
+                <textarea spellcheck="false" name="plain_text" class="form-control"></textarea>
+            </div>
+            <div class="col-md-6">
+                <p>Hash值：</p>
+                <textarea spellcheck="false" name="cipher_text" class="form-control" disabled="disabled"></textarea>
+            </div>
+        </div>
+        <div class="row mb-20">
+            <div class="col-md-12">{$hash_button}</div>
+        </div>
+        <div class="row mb-20">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">所有类型：</span>
+                    <select class="form-control" name="other_algo">
+                        {foreach name='hash_select' item='val' key='key'}
+                        <option value="{$key}">{$val}</option>
+                        {/foreach}
+                    </select>
+                    <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" value="other" event-type="AJAX_SUBMIT">
+                        生成&nbsp;<i class="fa fa-chevron-right"></i>
+                    </button>
+                </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

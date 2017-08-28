@@ -1,0 +1,23 @@
+{extend name="common/main"}
+{block name="content"}
+<div class="contentHeader mb-20">
+    <div class="container">
+        <h1>格式化</h1>
+        <p>包括JSON格式化、XML格式化、CSS格式化、SQL格式化...</p>
+    </div>
+</div>
+<div class="container">
+    <ul class="nav nav-tabs mb-20">
+        {foreach $sub_nav as $nav}
+        {$nav}
+        {/foreach}
+    </ul>
+    <div id="alert-box">
+        {$flashMessage->output()}
+        <script>alertDelayHide();</script>
+    </div>
+    <div>
+        {$tab_content}
+    </div>
+</div>
+{/block}

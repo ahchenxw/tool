@@ -1,0 +1,81 @@
+<div class="tab-pane" id="json">
+    <div id="formatBox" class="formatBox mb-10">
+        <div id="numberBox" class="numberBox">
+            <div id="number" class="number">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
+                <p>8</p>
+                <p>9</p>
+                <p>10</p>
+                <p>11</p>
+                <p>12</p>
+                <p>13</p>
+                <p>14</p>
+                <p>15</p>
+            </div>
+        </div>
+        <textarea id="formatContent" class="formatContent" spellcheck="false" placeholder="请输入需要处理的SQL字符串"></textarea>
+    </div>
+    <div class="row mb-10">
+        <div class="col-md-12">
+            <div class="btn-group">
+                <button id="formatBtn" type="submit" class="btn btn-primary">格式化</button>
+                <button id="compressBtn" type="submit" class="btn btn-info">压缩</button>
+                <!--<button type="submit" class="btn btn-success">复制</button>-->
+                <button id="cleanBtn" type="button" class="btn btn-danger">清空</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var $numberBox = $("#numberBox");
+        var $number = $("#number");
+        var $formatBtn = $("#formatBtn");
+        var $compressBtn = $("#compressBtn");
+        var $cleanBtn = $("#cleanBtn");
+        var $formatContent = $("#formatContent");
+        var interval = null;
+        $formatBtn.click(function () {
+            var val = $formatContent.val();
+            $formatContent.val(vkbeautify.sql(val));
+        });
+        $compressBtn.click(function () {
+            var val = $formatContent.val();
+            $formatContent.val(vkbeautify.sqlmin(val));
+        });
+        $cleanBtn.click(function () {
+            $formatContent.val("");
+        });
+        function setNumberBox(height, scrollTop) {
+            $numberBox.height(scrollTop > 0 ? height : height - scrollTop);
+            var pLen = $number.children("p").length;
+            var maxLen = Math.ceil((height + scrollTop) / 20);
+            for (var i = pLen + 1; i <= maxLen; i++) {
+                $number.append("<p>" + i + "</p>");
+            }
+        }
+        $formatContent.scroll(function (evt) {
+            var $target = $(evt.currentTarget);
+            setNumberBox($target.height(), $target.scrollTop());
+            $number.css('margin-top', -1 * $target.scrollTop());
+        });
+        $formatContent.mousedown(function (evt) {
+            var $target = $(evt.currentTarget);
+            if (interval == null) {
+                interval = setInterval(function () {
+                    setNumberBox($target.height(), $target.scrollTop());
+                }, 50);
+            }
+        });
+        $formatContent.mouseup(function () {
+            clearInterval(interval);
+            interval = null;
+        });
+    });
+</script>
