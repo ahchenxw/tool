@@ -1,25 +1,20 @@
-<div class="tab-pane" id="symmetric">
+<div class="tab-pane">
     <form method="post">
         <div class="row mb-20">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="input-group">
-                    <input class="form-control" name="address" placeholder="请输入网址或IP地址" value="{$address}">
-                    <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-search"></i>查询
-                    </button>
-                </span>
-                </div>
+            <div class="col-md-12 mb-10">
+                    <textarea style="height: 100px;" class="form-control" name="address" placeholder="请输入网址或IP地址，多个可用英文逗号隔开，最多100个！">{$address}</textarea>
+            </div>
+            <div class="col-md-10" style="line-height:34px;">
+                最近查询：<a href="#">www.baidu.com</a>
+            </div>
+            <div class="col-md-2" style="text-align:right;">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i>查询
+                </button>
             </div>
         </div>
         <div class="row mb-10">
             <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        最近查询：<a href="#">www.baidu.com</a>
-                    </div>
-                </div>
                 <div class="panel panel-default">
                     <table class="table">
                         <thead>

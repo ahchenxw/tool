@@ -58,9 +58,9 @@ class Ip extends Base
         $this->view->assign('address', $address);
         $this->view->assign('user_ip', $userIp);
         $this->view->assign('user_position', $userPosition);
-        $tabContent = $this->view->fetch("ipaddress/ip");
+        $tabContent = $this->view->fetch("ip/search");
         $this->view->assign('tab_content', $tabContent);
-        return view('ipaddress/index');
+        return view('ip/index');
     }
 
     public function ipwhois()
@@ -74,9 +74,9 @@ class Ip extends Base
             $rawData[] = trim($item);
         }
         $this->view->assign('raw_data', $rawData);
-        $tabContent = $this->view->fetch("ipaddress/ipwhois");
+        $tabContent = $this->view->fetch("ip/ipwhois");
         $this->view->assign('tab_content', $tabContent);
-        return view('ipaddress/index');
+        return view('ip/index');
     }
 
     /**
